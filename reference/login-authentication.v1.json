@@ -1,0 +1,100 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "login authentication",
+    "version": "1.0",
+    "description": "for authenticate of user got api key",
+    "contact": {
+      "name": "Karim",
+      "email": "karimdavoodi@gmail.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/users/{user}/{password}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20
+          },
+          "name": "password",
+          "in": "path",
+          "required": true
+        },
+        {
+          "schema": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "name": "user",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "examples": {
+                  "example-1": {}
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-users-userid",
+        "description": "Got token for authentication"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "API Key - 1": {
+        "name": "API Key",
+        "type": "apiKey",
+        "in": "query"
+      }
+    },
+    "schemas": {
+      "User": {
+        "title": "User",
+        "type": "object",
+        "description": "Users",
+        "x-examples": {},
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "pass": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
