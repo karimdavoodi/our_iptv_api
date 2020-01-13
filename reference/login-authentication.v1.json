@@ -15,7 +15,7 @@
     }
   ],
   "paths": {
-    "/users/{user}/{password}": {
+    "/auth/{user}/{password}": {
       "parameters": [
         {
           "schema": {
@@ -57,11 +57,12 @@
                     }
                   }
                 },
-                "examples": {
-                  "example-1": {}
-                }
+                "examples": {}
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
           }
         },
         "operationId": "get-users-userid",
